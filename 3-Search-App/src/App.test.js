@@ -1,9 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import {
+    createShallow,
+    createRender,
+    createMount
+} from "@material-ui/core/test-utils";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import App from "./App";
+import { SearchHistory } from "./Components/SearchHistory/SearchHistory";
+import ReactTestUtils from "react-dom/test-utils";
+
+const mockFunction = jest.fn();
+
+describe("App", () => {
+    let shallow;
+    let mount;
+    let render;
+
+    beforeEach(() => {
+        render = createRender();
+        mount = createMount();
+        shallow = createShallow();
+    });
+
+    test("renders without crashing", () => {
+        render(<App />);
+    });
+
+    test("Should contain search history", () => {
+        const wrapper = shallow(<App />);
+
+        console.log(wrapper);
+
+        // ReactTestUtils.findAllInRenderedTree("SearchHistory");
+    });
 });

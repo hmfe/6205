@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import * as uuidv4 from 'uuid/v4'
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import * as uuidv4 from "uuid/v4";
 
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 async function getCountries(setValues) {
     const response = await fetch("https://restcountries.eu/rest/v2/all");
@@ -13,7 +14,7 @@ async function getCountries(setValues) {
 export const SearchInput = ({ searchedList, setSearchedList }) => {
     const [request, setRequest] = useState(false);
     const [countries, setCountries] = useState([]);
-    const [searchValue, setSearchValue] = useState(null)
+    const [searchValue, setSearchValue] = useState(null);
 
     useEffect(() => {
         if (!request) {
@@ -28,10 +29,10 @@ export const SearchInput = ({ searchedList, setSearchedList }) => {
             name,
             flag,
             date: Date.now()
-        }
+        };
         setSearchedList([...searchedList, searchElement]);
         setSearchValue(null);
-    }
+    };
 
     return (
         <Autocomplete
@@ -46,7 +47,13 @@ export const SearchInput = ({ searchedList, setSearchedList }) => {
             renderInput={TextBox}
         />
     );
-}
+};
 
+SearchInput.propTypes = {
+    searchedList: PropTypes.array,
+    setSearchedList: PropTypes.func
+};
 
-const TextBox = (params) => (<TextField {...params} label="Search for a country" fullWidth />);
+const TextBox = params => (
+    <TextField {...params} label="Search for a country" fullWidth />
+);
