@@ -18,8 +18,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   title: {
-    margin: theme.spacing(4, 0, 2),
+    margin: theme.spacing(3, 0, 5),
+    textAlign: "center"
   },
+
   MuiAutocomplete: {
     root: {
       marginBottom: '200px'
@@ -44,20 +46,24 @@ function App() {
   }
 
   return (
-    <Container maxWidth="md" className={classes.container}>
+    <Container maxWidth="lg" className={classes.container}>
+      <Typography id="appTitle" variant='h3' className={classes.title}>Search Application for H&M</Typography>
       <Grid container>
         <Grid className={classes.GridSearch} item sm={6} xs={12}>
           <SearchInput searchedList={searchedList} setSearchedList={setSearchedList}></SearchInput>
         </Grid>
-        <Grid item sm={6} xs={12}>
-          <Typography variant="h4" className={classes.title}>
+        <Grid item direction="column"
+          justify="center"
+          alignItems="center"
+          sm={6} xs={12}>
+          <Typography aria-label="Search history" variant="h4" className={classes.title}>
             Search History
-        </Typography>
+          </Typography>
           <SearchHistory searchedList={searchedList} setSearchedList={setSearchedList} />
-          <Button color={'secondary'} variant={'contained'} onClick={removeAllSearches}>Remove All Searches</Button>
+          <Button id="clearHistory" aria-label="Clear search history" color={'secondary'} variant={'contained'} onClick={removeAllSearches}>Clear search history</Button>
         </Grid>
       </Grid>
-    </Container >
+    </Container>
   );
 }
 

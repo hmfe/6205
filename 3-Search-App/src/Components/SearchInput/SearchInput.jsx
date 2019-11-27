@@ -49,4 +49,4 @@ export const SearchInput = ({ searchedList, setSearchedList }) => {
 }
 
 
-const TextBox = (params) => (<TextField {...params} label="Search for a country" variant="outlined" fullWidth />);
+const TextBox = (params) => (<TextField {...params} label="Search for a country" fullWidth />);
