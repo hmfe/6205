@@ -14,16 +14,16 @@ import {
     Typography
 } from "@material-ui/core";
 
-export const SearchHistory = ({ searchedList, setSearchedList }) => {
+const SearchHistory = ({ searchedList, setSearchedList }) => {
     const handleRemoveSearch = ({ uid }) => {
         setSearchedList(searchedList.filter(country => country.uid !== uid));
     };
 
     return (
-        <List>
-            {searchedList.length > 0 ? (
+        <List role="list">
+            {searchedList && searchedList.length > 0 ? (
                 searchedList.map(country => (
-                    <ListItem key={country.uid}>
+                    <ListItem role="listitem" key={country.uid}>
                         <ListItemAvatar>
                             <Avatar
                                 src={country.flag}
@@ -49,13 +49,16 @@ export const SearchHistory = ({ searchedList, setSearchedList }) => {
                     </ListItem>
                 ))
             ) : (
-                <Typography variant="body1">No search done</Typography>
-            )}
+                    <Typography variant="body1">No search done</Typography>
+                )}
         </List>
     );
 };
 
 SearchHistory.propTypes = {
-    searchedList: PropTypes.array,
-    setSearchedList: PropTypes.func
+    searchedList: PropTypes.array.isRequired,
+    setSearchedList: PropTypes.func.isRequired
 };
+
+
+export default SearchHistory;

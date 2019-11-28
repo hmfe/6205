@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "./App.css";
 import { makeStyles } from "@material-ui/core/styles";
-import { SearchInput } from "./Components/SearchInput/SearchInput";
-import { SearchHistory } from "./Components/SearchHistory/SearchHistory";
+import SearchInput from "./Components/SearchInput";
+import SearchHistory from "./Components/SearchHistory";
 import { Button, Typography, Grid, Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({

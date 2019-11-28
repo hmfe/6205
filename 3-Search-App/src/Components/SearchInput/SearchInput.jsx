@@ -11,7 +11,7 @@ async function getCountries(setValues) {
     setValues(countries);
 }
 
-export const SearchInput = ({ searchedList, setSearchedList }) => {
+const SearchInput = ({ searchedList, setSearchedList }) => {
     const [request, setRequest] = useState(false);
     const [countries, setCountries] = useState([]);
     const [searchValue, setSearchValue] = useState(null);
@@ -36,7 +36,9 @@ export const SearchInput = ({ searchedList, setSearchedList }) => {
 
     return (
         <Autocomplete
-            id="combo-box-demo"
+            id="countryAutoComplete"
+            aria-autocomplete="list"
+            aria-labelledby="autoCompleteTxtBox"
             options={countries}
             autoSelect={true}
             value={searchValue}
@@ -50,10 +52,12 @@ export const SearchInput = ({ searchedList, setSearchedList }) => {
 };
 
 SearchInput.propTypes = {
-    searchedList: PropTypes.array,
-    setSearchedList: PropTypes.func
+    searchedList: PropTypes.array.isRequired,
+    setSearchedList: PropTypes.func.isRequired
 };
 
 const TextBox = params => (
-    <TextField {...params} label="Search for a country" fullWidth />
+    <TextField id="autoCompleteTxtBox" {...params} label="Search for a country" fullWidth />
 );
+
+export default SearchInput;

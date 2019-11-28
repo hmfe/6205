@@ -17,6 +17,16 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+Currently the test coverage of this project is 
+
+```68.57% Statements 24/35  | 100% Branches 6/6 | 57.14% Functions 8/14 | 69.7% Lines 23/33```
+
+you can validate this by runing 
+
+```bash
+npm test -- --coverage
+```
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
@@ -37,32 +47,21 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Accessibility, Performance, and SEO
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After running runing several audits the values for the metrics mentioned on the title are 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Accessibility: 80 the main issues encountered here are due to the css framework I decided to use.
+- Best practices: 93 the recommendation here was to use http/2 since this ran on localhost it is expected to get this issue
+- SEO: 100 due to the number of meta tags added on the index page of the project
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Containarization
 
-### Analyzing the Bundle Size
+The project currently is containarized into a Dockerfile in order to run the application into a container first you will need to have docker installed and them go to your terminal to the root directory of the project 3-Search-App and run the following command
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```docker-compose up```
 
-### Making a Progressive Web App
+in order to shutdown the container input the following command in the terminal
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```docker-compose down```
